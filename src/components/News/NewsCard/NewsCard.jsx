@@ -11,8 +11,13 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import WebIcon from '@mui/icons-material/Web';
-import { MenuItem } from '@mui/material';
-import { Menu } from '@mui/icons-material';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router';
+
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -28,6 +33,7 @@ const ExpandMore = styled((props) => {
 const pages = ['Tech', 'BlockChain', 'Frontend','Backend', 'IA', 'Tools']
 
 function NewsCard( {title, url, text, content, image, date, author} ) {
+  const navigate = useNavigate()
 
   const defaultImage = 'https://images.unsplash.com/photo-1603468620905-8de7d86b781e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
 
@@ -36,6 +42,10 @@ function NewsCard( {title, url, text, content, image, date, author} ) {
   }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [expanded, setExpanded] = React.useState(false);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -63,9 +73,46 @@ function NewsCard( {title, url, text, content, image, date, author} ) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing >
-        <IconButton aria-label="add to favorites">
-          
-        </IconButton>
+
+
+    
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              
+              <MoreVertIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center" onClick={(e) => navigate(`/${page}`)}>{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+
+
         <IconButton aria-label="go to web" href={url}>
           <WebIcon 
             sx={{mr: 2}}
