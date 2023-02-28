@@ -28,3 +28,12 @@
 
 
 <h2 align="center">Espero que lo disfruten tanto como yo !!!</h2>
+
+<div align="center">
+  <h3 align="left">Dev-news-Project</h3>
+<a href="https://github.com/dearmascarlos/dev-news"> <img src="https://raw.githubusercontent.com/dearmascarlos/dearmascarlos/main/assets/logo-news.png" alt="news"/>&nbsp;&nbsp; </a> 
+ <img src="https://raw.githubusercontent.com/dearmascarlos/dearmascarlos/main/assets/Dev News.png" alt="news"/>&nbsp;&nbsp;
+
+  
+</div>
+
