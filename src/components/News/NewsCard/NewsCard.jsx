@@ -38,7 +38,7 @@ function NewsCard( {title, url, text, content, image, date, author} ) {
   const defaultImage = 'https://images.unsplash.com/photo-1603468620905-8de7d86b781e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
 
   const checkImage = () => {
-   return !image || image == null ? image = defaultImage : image
+   return !image || image == null || image == '' ? image = defaultImage : image
   }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [expanded, setExpanded] = React.useState(false);
@@ -56,7 +56,14 @@ function NewsCard( {title, url, text, content, image, date, author} ) {
   };
 
   return (
-    <Card sx={{ maxWidth:800, mb: 5 }}>
+    <Card 
+      sx={{ 
+        maxWidth:800, 
+        mb: 5,
+        backgroundColor:'#977d4c',
+        borderRadius: '20px'
+      }}
+    >
       <CardHeader
         title={title}
         subheader={date}
@@ -68,7 +75,7 @@ function NewsCard( {title, url, text, content, image, date, author} ) {
         alt="Default"
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.main">
           {text}
         </Typography>
       </CardContent>
@@ -113,7 +120,11 @@ function NewsCard( {title, url, text, content, image, date, author} ) {
             </Menu>
 
 
-        <IconButton aria-label="go to web" href={url}>
+        <IconButton 
+          aria-label="go to web" 
+          href={url}
+          target='_blank'
+        >
           <WebIcon 
             sx={{mr: 2}}
           />Go News
