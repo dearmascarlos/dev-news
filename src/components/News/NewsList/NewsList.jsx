@@ -4,6 +4,8 @@ import NewsCard from '../NewsCard/NewsCard'
 
 function NewsList( { news } ) {
 
+  console.log(news)
+
   const renderNews = () => {
     return (
         news && news?.map((news, i) => {
