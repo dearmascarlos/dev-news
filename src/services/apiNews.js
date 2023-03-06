@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiNews = axios.create({
-    baseURL: process.env.REACT_APP_API
+    baseURL:  'https://newsapi.org/v2/'
 })
 
 const getNews = async (q) => {
